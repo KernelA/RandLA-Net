@@ -32,7 +32,7 @@ class ModelTester:
 
         # Load trained model
         if restore_snap is not None:
-            self.saver.restore(self.sess, restore_snap)
+            self.saver.restore(self.sess, tf.train.latest_checkpoint(restore_snap))
             print("Model restored from " + restore_snap)
 
         self.prob_logits = tf.nn.softmax(model.logits)
